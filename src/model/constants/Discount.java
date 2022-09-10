@@ -1,24 +1,12 @@
 package model.constants;
 
-import model.Apple;
 import model.Discountable;
 
-import java.util.Map;
-
-public class Discount {
-    int valueDiscount;
-    public static final Map<Class<?extends Discountable>,Integer>discounts=Map.of(Apple.class, 60);
+public class Discount implements Discountable {
+   public static final double VALUE_DISCOUNT = 60.0;
 
 
-
-
-
-    /*
-    public Discount (int valueDiscount){
-        this.valueDiscount = valueDiscount;
-    }
-
-    public double calculatePrice(double price){
-        return price * (1-100/valueDiscount);
-    }*/
+   public double getDiscount(double price) {
+      return price * (1 - VALUE_DISCOUNT / 100);
+   }
 }
