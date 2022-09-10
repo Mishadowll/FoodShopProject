@@ -1,49 +1,51 @@
 package service;
-import model.Discountable;
+import model.Apple;
 import model.Food;
+import model.constants.Discount;
+import static model.constants.Color.COLOR_RED;
 
-import java.util.Arrays;
 
-public class ShoppingCart {
-   private Food[] foods;
-
+public class ShoppingCart extends Discount {
+    private Food[] foods;
 
     public ShoppingCart(Food[] foods) {
         this.foods = foods;
     }
 
-    public double getTotalCost(){
+    public double getTotalCost() {
         double result = 0;
-        for (int i = 0; i < foods.length; i++){
-            result += foods[i].getPrice();
+        for (Food food : foods) {
+            result += food.getPrice() * food.getAmount();
         }
         return result;
-
-        //return Arrays.stream(foods).mapToDouble(Food::getPrice).sum();
     }
-    public double getTotalCostDiscount(){
-       /* double result = 0;
-        for (int i = 0; i < foods.length; i++){
-            result += foods[i].getPrice();*/
-        //}
 
-        return Arrays.stream(foods).mapToDouble(x->{
-            if (x instanceof Discountable){
-                return ((Discountable) x).getDiscount();
-            } else {
-                return x.getPrice();
+    public double getTotalCostDiscount() {
+        double result = 0;
+        for (Food food : foods) {
+            if (food instanceof Apple) {
+                if (((Apple) food).getColor().equals(COLOR_RED)) {
+                    double redAppleDiscount = this.getDiscount(food.getPrice() * food.getAmount());
+                    result += redAppleDiscount;
+                    continue;
+                }
             }
-        }).sum();
-    }
-    public double getTotalCostVegetarian(){
-       /* double result = 0;
-        for (int i = 0; i < foods.length; i++){
-            result += foods[i].getPrice();*/
-        //}
-
-        return Arrays.stream(foods).filter(food -> food.isVegetarian()).mapToDouble(Food::getPrice).sum();
+            result += food.getPrice() * food.getAmount();
+        }
+        return result;
     }
 
+    public double getTotalCostVegetarian() {
+        double result = 0;
+        for (Food food : foods) {
+            if (food.isVegetarian()) {
+                result += food.getPrice() * food.getAmount();
+            }
+        }
+        return result;
+    }
 }
+
+
 
 

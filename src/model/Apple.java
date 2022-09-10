@@ -1,27 +1,21 @@
 package model;
 
-import static model.constants.Discount.discounts;
 
-public class Apple extends Food implements Discountable {
+public class Apple extends Food {
 
-    protected String color;
+    private String color;
 
     public Apple(int amount, double price, String color) {
         super(amount, price, true);
         this.color = color;
     }
 
+    public String getColor() {
+        return this.color;
+    }
 
+    }
 
-   /* public double AgetDiscount() {
-
-        var discount = discounts.get(this.getClass());
-        return price * (1-discount/100);
-    }*/
-   /* @Override
-    public double getPrice(){
-       return this.price;*/
-}
 
 
 
