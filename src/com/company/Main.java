@@ -1,7 +1,6 @@
 package com.company;
 
 import model.Apple;
-import model.Discountable;
 import model.Food;
 import model.Meat;
 import model.constants.Color;
@@ -16,7 +15,7 @@ public class Main {
 
         Food[] foods = new Food[]{meat, appleGreen, appleRed};
 
-        System.out.println(appleGreen.getDiscount());
+        //System.out.println(appleGreen.getDiscount());
         ShoppingCart cart = new ShoppingCart(foods);
 
         System.out.println(cart.getTotalCost());

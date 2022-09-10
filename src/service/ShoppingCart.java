@@ -13,13 +13,13 @@ public class ShoppingCart {
     }
 
     public double getTotalCost(){
-        /*double result = 0;
+        double result = 0;
         for (int i = 0; i < foods.length; i++){
             result += foods[i].getPrice();
         }
-        return result;*/
+        return result;
 
-        return Arrays.stream(foods).mapToDouble(Food::getPrice).sum();
+        //return Arrays.stream(foods).mapToDouble(Food::getPrice).sum();
     }
     public double getTotalCostDiscount(){
        /* double result = 0;

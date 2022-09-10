@@ -16,10 +16,10 @@ public abstract class Food {
         return price;
     }
 
-    public void setPrice(double price) {
+    /*public void setPrice(double price) {
 
         this.price = price;
-    }
+    }*/
     public boolean isVegetarian() {
 
         return isVegetarian;
